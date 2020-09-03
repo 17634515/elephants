@@ -34,8 +34,9 @@ jobs:
         RESOURSE_ID: ${{ secrets.RESOURSE_ID }}
       run: |
         ibmcloud target -g "$RESOURSE_ID"
-        ibmcloud target --cf-api 'https://api.us-south.cf.cloud.ibm.com' -o 17634515@qq.com -s dev
+        ibmcloud target --cf
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf version
+        pwd
         ibmcloud cf o
