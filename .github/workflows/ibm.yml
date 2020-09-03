@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-#    - name: Download And Install
-#      run: curl -sL https://ibm.biz/idt-installer | bash
+    - name: Download And Install
+      run: curl -sL https://ibm.biz/idt-installer | bash
 
     - name: Login IBM Cloud
       env:
@@ -37,8 +37,6 @@ jobs:
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
-        ibmcloud cf install
-        ibmcloud cf login
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf restart "ibm-vps-china"
