@@ -32,10 +32,11 @@ jobs:
       env:
         RESOURSE_ID: ${{ secrets.RESOURSE_ID }}
       run: |
-        ibmcloud cf install
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
+        ibmcloud cf install
     - name: Restart IBM Cloud
       run: |
+        env
         ibmcloud cf version
         ibmcloud cf o
