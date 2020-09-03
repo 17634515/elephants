@@ -49,7 +49,6 @@ jobs:
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
-        ibmcloud config --usage-stats-collect false
         ibmcloud cf install
     - name: Restart IBM Cloud
       env:
