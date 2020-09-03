@@ -38,7 +38,6 @@ jobs:
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
-        ibmcloud target --cf-api 'https://api.us-south.cf.cloud.ibm.com'
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf restart "ibm-vps-china"
