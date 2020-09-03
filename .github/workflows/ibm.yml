@@ -33,10 +33,12 @@ jobs:
     - name: Target IBM Cloud
       env:
         RESOURSE_ID: ${{ secrets.RESOURSE_ID }}
+        IBM_ACCOUNT: ${{ secrets.IBM_ACCOUNT }}
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
         ibmcloud cf install
+        ibmcloud cf login
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf restart "ibm-vps-china"
