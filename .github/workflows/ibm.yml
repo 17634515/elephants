@@ -18,6 +18,7 @@ jobs:
     - name: Download And Install
       run: |
         curl -sL https://ibm.biz/idt-installer | bash
+        ibmcloud cf install
     - name: Login IBM Cloud
       env:
         IBM_ACCOUNT: ${{ secrets.IBM_ACCOUNT }}
@@ -37,8 +38,6 @@ jobs:
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
-        ibmcloud cf install
-        ibmcloud cf push
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf apps
