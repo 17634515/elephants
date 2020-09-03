@@ -1,12 +1,4 @@
-# This workflow will build a docker container, publish it to IBM Container Registry, and deploy it to IKS when a release is created
-#
-# To configure this workflow:
-#
-# 1. Ensure that your repository contains a Dockerfile
-# 2. Setup secrets in your repository by going to settings: Create ICR_NAMESPACE and IBM_CLOUD_API_KEY
-# 3. Change the values for the IBM_CLOUD_REGION, REGISTRY_HOSTNAME, IMAGE_NAME, IKS_CLUSTER, DEPLOYMENT_NAME, and PORT
-
-name: IBM cloud Auto Restart
+name: IBM Cloud Auto Restart
 
 on:
   push:
@@ -16,7 +8,6 @@ on:
   schedule:
     - cron: '0 12 * * FRI'
 
-
 jobs:
   ibm-cloud-restart:
     runs-on: ubuntu-latest
@@ -24,14 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Download and Install IBM Cloud CLI
-    - name: Install IBM Cloud CLI
-      run: |
-        curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-        ibmcloud --version
-        ibmcloud config --check-version=false
-        ibmcloud plugin install -f kubernetes-service
-        ibmcloud plugin install -f container-registry
+    - name: Download And Install
+      run: curl -sL https://ibm.biz/idt-installer | bash
 
     - name: Login IBM Cloud
       env:
@@ -43,13 +28,15 @@ jobs:
         $REGION_NUM
         no
         EOF
-    - name: Restart IBM Cloud
+    - name: Target IBM Cloud
       env:
         RESOURSE_ID: ${{ secrets.RESOURSE_ID }}
-        IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
         ibmcloud cf install
+    - name: Restart IBM Cloud
+      env:
+        IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
+      run: |
         ibmcloud cf restart "$IBM_APP_NAME"
-   
