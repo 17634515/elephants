@@ -37,4 +37,4 @@ jobs:
         ibmcloud cf install
     - name: Restart IBM Cloud
       run: |
-        ibmcloud api cloud.ibm.com
+        ibmcloud api https://cloud.ibm.com --skip-ssl-validation
