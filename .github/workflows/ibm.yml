@@ -17,7 +17,7 @@ jobs:
 
     - name: Download And Install
       run: |
-        curl -sL https://ibm.biz/idt-installer | bash
+        curl -fsSL https://clis.ng.bluemix.net/install/linux | sh
         ibmcloud cf install
     - name: Login IBM Cloud
       env:
@@ -38,5 +38,5 @@ jobs:
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf version
-        pwd
-        ibmcloud cf o
+        whereis bmcloud
+        whereis cf
