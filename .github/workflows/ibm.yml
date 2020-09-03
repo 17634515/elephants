@@ -25,6 +25,8 @@ jobs:
         RESOURSE_ID: ${{ secrets.RESOURSE_ID }}
         IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
       run: |
+        ibmcloud target --cf
+        ibmcloud cf install
         ibmcloud login <<EOF
         $IBM_ACCOUNT
         $REGION_NUM
@@ -36,9 +38,6 @@ jobs:
         IBM_ACCOUNT: ${{ secrets.IBM_ACCOUNT }}
       run: |
         ibmcloud target -g "$RESOURSE_ID"
-        ibmcloud target --cf
-        ibmcloud cf install
-        ibmcloud api https://api.ng.bluemix.net 
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf restart "ibm-vps-china"
