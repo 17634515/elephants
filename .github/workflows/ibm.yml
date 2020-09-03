@@ -38,5 +38,4 @@ jobs:
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf version
-        whereis bmcloud
-        whereis cf
+        ibmcloud cf o
