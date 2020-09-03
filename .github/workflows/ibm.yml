@@ -30,7 +30,6 @@ jobs:
         $REGION_NUM
         no
         EOF
-        ibmcloud api https://cloud.ibm.com --skip-ssl-validation
     - name: Target IBM Cloud
       env:
         RESOURSE_ID: ${{ secrets.RESOURSE_ID }}
@@ -40,4 +39,4 @@ jobs:
         ibmcloud cf install
     - name: Restart IBM Cloud
       run: |
-        ibmcloud api https://cloud.ibm.com --skip-ssl-validation
+        ibmcloud cf version
