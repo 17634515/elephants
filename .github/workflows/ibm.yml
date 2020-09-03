@@ -40,4 +40,4 @@ jobs:
         ibmcloud target --cf
     - name: Restart IBM Cloud
       run: |
-        ibmcloud cf apps
+        ibmcloud cf version
