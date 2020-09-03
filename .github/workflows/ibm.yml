@@ -43,16 +43,13 @@ jobs:
         $REGION_NUM
         no
         EOF
-    - name: Target IBM Cloud
+    - name: Restart IBM Cloud
       env:
         RESOURSE_ID: ${{ secrets.RESOURSE_ID }}
+        IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
         ibmcloud cf install
-    - name: Restart IBM Cloud
-      env:
-        IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
-      run: |
         ibmcloud cf restart "$IBM_APP_NAME"
    
