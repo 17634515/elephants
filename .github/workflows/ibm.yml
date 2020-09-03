@@ -19,7 +19,6 @@ jobs:
       run: |
         curl -sL https://ibm.biz/idt-installer | bash
         ibmcloud cf install
-        ibmcloud target --cf-api 'https://api.us-south.cf.cloud.ibm.com'
     - name: Login IBM Cloud
       env:
         IBM_ACCOUNT: ${{ secrets.IBM_ACCOUNT }}
@@ -39,6 +38,7 @@ jobs:
       run: |
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
+        ibmcloud target --cf-api 'https://api.us-south.cf.cloud.ibm.com'
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf restart "ibm-vps-china"
