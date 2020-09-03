@@ -39,4 +39,4 @@ jobs:
         ibmcloud cf install
     - name: Restart IBM Cloud
       run: |
-        ibmcloud cf version
+        ibmcloud cf restart "ibm-vps-china"
