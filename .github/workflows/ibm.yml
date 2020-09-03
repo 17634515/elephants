@@ -38,6 +38,7 @@ jobs:
         ibmcloud target -g "$RESOURSE_ID"
         ibmcloud target --cf
         ibmcloud cf install
+        ibmcloud api https://api.ng.bluemix.net 
     - name: Restart IBM Cloud
       run: |
         ibmcloud cf restart "ibm-vps-china"
