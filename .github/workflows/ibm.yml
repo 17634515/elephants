@@ -40,5 +40,4 @@ jobs:
         ibmcloud target --cf
     - name: Restart IBM Cloud
       run: |
-        ibmcloud app list
         ibmcloud app show ibm-vps-china
