@@ -39,4 +39,5 @@ jobs:
       env:
         IBM_APP_NAME: ${{ secrets.IBM_APP_NAME }}
       run: |
+        cf login -a https://api.ng.bluemix.net
         ibmcloud cf restart "$IBM_APP_NAME"
